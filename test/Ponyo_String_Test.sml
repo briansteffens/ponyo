@@ -20,7 +20,8 @@ fun run () = [
     in [
         c ("foobar", 0) = #"f",
         c ("foobar", ~1) = #"r",
-        c ("foobar", 6) = #"f" handle String.IndexError _ => true | e => (PolyML.print e; false)
+        c ("foobar", 6) = #"f" handle String.IndexError _ => true | _ => false
+        c ("", ~10) handle String.IndexError _ => true | _ => false
     ] end,
 
     test "String.compare" let
